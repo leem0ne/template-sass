@@ -1,0 +1,144 @@
+@import '_vars'
+
+=width100
+	width: calc(100% - $offset)
+	margin-left: $offset / 2
+	margin-right: $offset / 2
+
+=width50
+	width: calc(50% - $offset)
+	margin-left: $offset / 2
+	margin-right: $offset / 2
+
+
+=fz20
+  font-size: 18px
+
+  +sm-min
+    font-size: 20px
+  
+=fz18
+  font-size: 16px
+
+  +sm-min
+    font-size: 18px
+
+
+//MEDIA QUERIES
+=lg
+	@media screen and (max-width: $w-lg) 
+		@content
+
+=md
+	@media screen and (max-width: $w-md)
+		@content
+
+=sm
+	@media screen and (max-width: $w-sm)
+		@content
+
+=xs
+	@media screen and (max-width: $w-xs)
+		@content
+
+=xxs
+	@media screen and (max-width: $w-xxs)
+		@content
+
+
+
+=xs-sm
+	@media screen and (min-width: ($w-xs + 1)) and (max-width: $w-sm)
+		@content
+
+=xs-md
+	@media screen and (min-width: ($w-xs + 1)) and (max-width: $w-md)
+		@content
+
+=xs-lg
+	@media screen and (min-width: ($w-xs + 1)) and (max-width: $w-lg)
+		@content
+
+=sm-md
+	@media screen and (min-width: ($w-sm + 1)) and (max-width: $w-md)
+		@content
+
+=sm-lg
+	@media screen and (min-width: ($w-sm + 1)) and (max-width: $w-lg)
+		@content
+
+=md-lg
+	@media screen and (min-width: ($w-md + 1)) and (max-width: $w-lg)
+		@content
+
+
+=lg-min
+	@media screen and (min-width: ($w-lg + 1))
+		@content
+
+=md-min
+	@media screen and (min-width: ($w-md + 1))
+		@content
+
+=sm-min
+	@media screen and (min-width: ($w-sm + 1))
+		@content
+
+=xs-min
+	@media screen and (min-width: ($w-xs + 1))
+		@content
+
+=xxs-min
+	@media screen and (min-width: ($w-xxs + 1))
+		@content
+
+
+
+//fonts
+=font($alias, $name, $weight: normal, $style: normal)
+	@font-face
+		font-family: $alias
+		src: url('#{$path}/fonts/#{$name}.eot')
+  	src: local('☺'), url('#{$path}/fonts/#{$name}.woff') format('woff'), url('#{$path}/fonts/#{$name}.otf') format('otf'), url('#{$path}/fonts/#{$name}.ttf') format('truetype'), url('#{$path}/fonts/#{$name}.svg') format('svg')
+		font-weight: $weight
+		font-style: $style
+
+
+//Уголки
+=arrow($width, $height, $bg, $direction)
+	width: 0px
+	height: 0px
+	border-style: solid
+
+	@if ($direction = t)
+		border-width: 0 $width/2 $height $width/2
+		border-color: transparent transparent $bg transparent
+	
+	@if ($direction = r)
+		border-width: $height/2 0 $height/2 $width
+		border-color: transparent transparent transparent $bg
+	
+	@if ($direction = b)
+		border-width: $height $width/2 0 $width/2
+		border-color: $bg transparent transparent transparent
+	
+	@if ($direction = l)
+		border-width: $height/2 $width $height/2 0
+		border-color: transparent $bg transparent transparent
+	
+	@if ($direction = tl)
+		border-width: $height $width 0 0
+		border-color: $bg transparent transparent transparent
+	
+	@if ($direction = tr)
+		border-width: 0 $width $height 0
+		border-color: transparent $bg transparent transparent
+	
+	@if ($direction = br)
+		border-width: 0 0 $height $width
+		border-color: transparent transparent $bg transparent
+	
+	@if ($direction = bl)
+		border-width: $height 0 0 $width
+		border-color: transparent transparent transparent $bg
+	
